@@ -21,6 +21,17 @@ function assets(name) {
 }
 
 module.exports = async (req, res, next) => {
+   const promises = [];
+   const componentNames = [];
+   const componentsPath = [];
+   routes.some((route) => {
+     const match = matchPath(req.path, route);
+     if (match) {
+       componentNames.push(route.componentName);
+       componentsPath.push(route.path);
+     }
+     return match;
+  });
   const client = new ApolloClient({
    ssrMode: true,
    // Remember that this is the interface the SSR server will use to connect to the
@@ -68,6 +79,10 @@ module.exports = async (req, res, next) => {
               window.__PRELOADED_STATE__ = ${JSON.stringify(initialState, null, 2).replace(/</g, '\\u003c')};
             </script>
             <section id="app">${html}</section>
-            `);
+            <script src='${assets(stats.common)}'></script>
+            ${componentNames.map(componentName => `<script src='${assets(stats[componentName])}'></script>`)}
+          </body>
+        </html>
+      `);
       res.end();
 };
