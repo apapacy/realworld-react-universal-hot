@@ -21,7 +21,6 @@ function assets(name) {
 }
 
 module.exports = async (req, res, next) => {
-  try{
   const client = new ApolloClient({
    ssrMode: true,
    // Remember that this is the interface the SSR server will use to connect to the
@@ -38,7 +37,6 @@ module.exports = async (req, res, next) => {
  });
 
     const context = {};
-console.log(req.url);
     const App = (
       <ApolloProvider client={client}>
         <StaticRouter location={req.url} context={context}>
@@ -47,8 +45,7 @@ console.log(req.url);
         </ApolloProvider>
       );
 
-    getDataFromTree(App).then((test) => {
-      console.log('test',test);
+    await getDataFromTree(App)
       const html = ReactDOMServer.renderToString((App));
       const initialState = client.extract();
 
@@ -69,15 +66,8 @@ console.log(req.url);
               // WARNING: See the following for security issues around embedding JSON in HTML:
               // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
               window.__PRELOADED_STATE__ = ${JSON.stringify(initialState, null, 2).replace(/</g, '\\u003c')};
-              window.__GWT__ = "${(req.signedCookies.token || '').replace(/</g, '\\u003c')}";
             </script>
             <section id="app">${html}</section>
-            <script src='${assets(stats.common)}'></script>
-            ${componentNames.map(componentName => `<script src='${assets(stats[componentName])}'></script>`)}
             `);
       res.end();
-    }, (error)=>console.log(error));
-  } catch(ex) {
-    console.log('ex', ex);
-  }
 };
