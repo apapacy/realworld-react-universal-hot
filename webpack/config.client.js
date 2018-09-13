@@ -41,15 +41,14 @@ module.exports = {
         cacheDirectory: isDevelopment,
         babelrc: false,
         presets: [
-          'es2015',
-          'es2017',
-          'react',
-          'stage-0',
-          'stage-3',
+          ["@babel/preset-env", {
+            "targets": "> 0.25%, not dead"
+          }],
+          "@babel/react"
         ],
         plugins: [
-          'transform-runtime',
-          'syntax-dynamic-import',
+          '@babel/plugin-transform-runtime',
+          '@babel/plugin-syntax-dynamic-import',
         ].concat(isDevelopment ? [
           // 'react-hot-loader/babel', -- server rendering troubles
           ['react-transform', {

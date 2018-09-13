@@ -1,14 +1,15 @@
 {
   "presets": [
-    "es2015",
-    "es2017",
-    "react",
-    "stage-0",
-    "stage-3"
+    ["@babel/preset-env", {
+      "targets": {
+        "node": "current"
+      }
+    }],
+    "@babel/react"
   ],
   "plugins": [
-    "transform-runtime",
-    "syntax-dynamic-import",
+    "@babel/plugin-transform-runtime",
+    "@babel/plugin-syntax-dynamic-import",
     "babel-plugin-dynamic-import-node"
   ]
 }
