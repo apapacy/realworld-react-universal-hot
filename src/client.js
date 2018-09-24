@@ -24,6 +24,6 @@ hydrate(
   document.getElementById('app') // eslint-disable-line
 );
 
-if (module.hot) {
-  hot.module(AppRouter);
-}
+//if (module.hot) {
+//  module.hot(AppRouter);
+//}
