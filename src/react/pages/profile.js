@@ -126,3 +126,7 @@ export default connect(state => ({
   profile: state.profile,
   hydrated: state.hydrated,
 }))(Profile);
+
+if (module.hot) {
+  module.hot.accept()
+}

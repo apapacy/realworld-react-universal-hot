@@ -128,3 +128,7 @@ export default connect(state => ({
   articles: state.articles,
   hydrated: state.hydrated,
 }))(Home);
+
+if (module.hot) {
+  module.hot.accept()
+}

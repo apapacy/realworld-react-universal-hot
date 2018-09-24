@@ -15,13 +15,16 @@ export default hot(module)(() => (
             loader: () => import(`./${props.componentName}`).then(
               (component) => {
                 if (module.hot) {
-                  // hot(module)(component)
-                  module.hot.accept(component, () => {
+                  //render(component)
+                  //hot(module)(component);
+                  //module.hot.accept.apply(component);
+                  /*module.hot.accept(component, () => {
                     // if you are using harmony modules ({modules:false})
-                    render(AppRouter)
-                    // in all other cases - re-require App manually
+                    alert(1)
                     render(component)
-                  });
+                    // in all other cases - re-require App manually
+                    // render(require(`./${props.componentName}`));
+                  });*/
                 }
                 return component;
               },

@@ -13,23 +13,19 @@ const store = createStore(preloadedState);
 
 window.onload= () => store.dispatch(setHydrated()); // eslint-disable-line
 
+const App = <AppContainer>
+  <Provider store={store}>
+    <BrowserRouter>
+      <AppRouter />
+    </BrowserRouter>
+  </Provider>
+</AppContainer>;
+
 hydrate(
-  <AppContainer>
-    <Provider store={store}>
-      <BrowserRouter>
-        <AppRouter />
-      </BrowserRouter>
-    </Provider>
-  </AppContainer>,
+  App,
   document.getElementById('app') // eslint-disable-line
 );
-
 if (module.hot) {
-  // hot(module)(AppRouter);
-  module.hot.accept('./react/clientRouter', () => {
-    // if you are using harmony modules ({modules:false})
-    render(AppRouter);
-    // in all other cases - re-require App manually
-    // render(require('./react/clientRouter'))
-  });
+  hot(module)(App);
+  module.hot.accept();
 }

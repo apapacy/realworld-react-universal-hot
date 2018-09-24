@@ -9,7 +9,7 @@ const entry = {};
 
 for (let i = 0; i < routes.length; i += 1) {
   entry[routes[i].componentName] = [
-    '@babel/polyfill',
+    // '@babel/polyfill',
     '../src/client.js',
     `../src/react/${routes[i].componentName}.js`,
   ];
@@ -43,24 +43,29 @@ module.exports = {
         presets: [
           ['@babel/preset-env', {
             targets: {
-              browsers: ['>99%'],
+              browsers: ['>90%'],
             },
           }],
           '@babel/preset-react',
         ],
         plugins: (isDevelopment ? [
-          'react-hot-loader/babel',
-          // 'react-hot-loader/babel', //-- server rendering troubles
-          /* ['react-transform', {
-            transforms: [{
-              transform: 'react-transform-hmr', // deprecated now but see above 'react-hot-loader/babel'
-              imports: ['react'],
-              locals: ['module'],
-            }],
-          }], */
-        ] : [
-        ]).concat([
+          ['@babel/plugin-transform-runtime', {
+            corejs: false,
+            helpers: true,
+            regenerator: true,
+            useESModules: false,
+          }],
           'syntax-dynamic-import',
+          'react-hot-loader/babel',
+        ] : [
+          ['@babel/plugin-transform-runtime', {
+            corejs: false,
+            helpers: true,
+            regenerator: true,
+            useESModules: false,
+          }],
+          'syntax-dynamic-import',
+        ]).concat([
         ]),
       },
     }],
