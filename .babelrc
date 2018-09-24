@@ -9,6 +9,7 @@
   ],
   "plugins": [
     "syntax-dynamic-import",
-    "babel-plugin-dynamic-import-node"
+    "babel-plugin-dynamic-import-node",
+    "@babel/plugin-transform-modules-commonjs"
   ]
 }

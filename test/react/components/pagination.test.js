@@ -1,4 +1,6 @@
 /* eslint-disable no-undef, function-paren-newline */
+import 'jsdom-global/register';
+import 'raf/polyfill';
 import React from 'react';
 import { MemoryRouter, Route } from 'react-router-dom';
 import { configure, mount } from 'enzyme';

@@ -1,4 +1,5 @@
 /* eslint-disable no-undef, function-paren-newline */
+import 'raf/polyfill';
 import React from 'react';
 import { shallow, configure } from 'enzyme';
 import renderer from 'react-test-renderer';
