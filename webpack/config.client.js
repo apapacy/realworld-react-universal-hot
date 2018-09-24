@@ -9,12 +9,12 @@ const entry = {};
 
 for (let i = 0; i < routes.length; i += 1) {
   entry[routes[i].componentName] = [
-    // '@babel/polyfill',
     '../src/client.js',
-    `../src/react/${routes[i].componentName}.js`,
   ];
   if (isDevelopment) {
     entry[routes[i].componentName].unshift('webpack-hot-middleware/client');
+  } else {
+    entry[routes[i].componentName].push(`../src/react/${routes[i].componentName}.js`);
   }
 }
 
@@ -49,6 +49,7 @@ module.exports = {
           '@babel/preset-react',
         ],
         plugins: (isDevelopment ? [
+          'react-hot-loader/babel',
           ['@babel/plugin-transform-runtime', {
             corejs: false,
             helpers: true,
@@ -56,7 +57,6 @@ module.exports = {
             useESModules: false,
           }],
           'syntax-dynamic-import',
-          'react-hot-loader/babel',
         ] : [
           ['@babel/plugin-transform-runtime', {
             corejs: false,

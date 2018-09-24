@@ -12,23 +12,7 @@ export default hot(module)(() => (
       {
         routes.map((props) => {
           props.component = Loadable({ // eslint-disable-line  no-param-reassign
-            loader: () => import(`./${props.componentName}`).then(
-              (component) => {
-                if (module.hot) {
-                  //render(component)
-                  //hot(module)(component);
-                  //module.hot.accept.apply(component);
-                  /*module.hot.accept(component, () => {
-                    // if you are using harmony modules ({modules:false})
-                    alert(1)
-                    render(component)
-                    // in all other cases - re-require App manually
-                    // render(require(`./${props.componentName}`));
-                  });*/
-                }
-                return component;
-              },
-            ), // eslint-disable-line
+            loader: () => import(`./${props.componentName}`), // eslint-disable-line
             loading: () => null,
             delay: 0,
             timeout: 10000,
@@ -39,3 +23,7 @@ export default hot(module)(() => (
     </Switch>
   </Layout>
 ));
+
+if (module.hot) {
+  module.hot.accept();
+}

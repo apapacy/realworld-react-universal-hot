@@ -13,19 +13,17 @@ const store = createStore(preloadedState);
 
 window.onload= () => store.dispatch(setHydrated()); // eslint-disable-line
 
-const App = <AppContainer>
-  <Provider store={store}>
+const App = <Provider store={store}>
     <BrowserRouter>
       <AppRouter />
     </BrowserRouter>
-  </Provider>
-</AppContainer>;
+  </Provider>;
 
 hydrate(
   App,
   document.getElementById('app') // eslint-disable-line
 );
 if (module.hot) {
-  hot(module)(App);
-  module.hot.accept();
+  //hot(module)(App);
+  //module.hot.accept();
 }
