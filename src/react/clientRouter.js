@@ -1,6 +1,7 @@
 import { hot } from 'react-hot-loader';
 import React from 'react';
 import Loadable from 'react-loadable';
+import { render } from 'react-dom';
 import { Route, Switch } from 'react-router-dom';
 import routes from './routes';
 import Layout from './components/layout';
@@ -22,3 +23,7 @@ export default hot(module)(() => (
     </Switch>
   </Layout>
 ));
+
+if (module.hot) {
+  module.hot.accept();
+}
