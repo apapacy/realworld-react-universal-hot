@@ -17,7 +17,7 @@ const app = express();
 const nodeEnv = process.env.NODE_ENV || 'development';
 
 const serverPath = path.resolve(__dirname, './dist/render.bundle.js');
-let { render } = require(serverPath); // eslint-disable-line import/no-dynamic-require
+let render = require(serverPath).default; // eslint-disable-line import/no-dynamic-require
 
 
 app.set('env', nodeEnv);
@@ -63,7 +63,7 @@ function onServerChange(err, stats) {
   }
   clearCache();
   try {
-    render = require(serverPath).render; // eslint-disable-line import/no-dynamic-require, global-require
+    render = require(serverPath).default; // eslint-disable-line import/no-dynamic-require, global-require, max-len
   } catch (ex) {
     console.log('Error detecded', ex);
   }

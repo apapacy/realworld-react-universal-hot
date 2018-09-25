@@ -15,7 +15,7 @@ function assets(name) {
   return prefix + name;
 }
 
-export const render = (req, res, next) => {
+export default (req, res, next) => {
   const store = createStore();
   const promises = [];
   const componentNames = [];

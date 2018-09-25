@@ -4,7 +4,7 @@ const cookieEncrypter = require('cookie-encrypter');
 const bodyParser = require('body-parser');
 const apicache = require('apicache');
 const api = require('./src/api/routes');
-const { render } = require('./dist/render.bundle.js');
+const render = require('./dist/render.bundle.js').default;
 const morgan = require('morgan');
 
 const port = Number(process.env.PORT) || 3000;

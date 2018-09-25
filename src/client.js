@@ -1,6 +1,5 @@
-import { AppContainer, hot } from 'react-hot-loader';
 import React from 'react';
-import { hydrate, render } from 'react-dom';
+import { hydrate } from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import AppRouter from './react/clientRouter'; // eslint-disable-line
@@ -13,17 +12,15 @@ const store = createStore(preloadedState);
 
 window.onload= () => store.dispatch(setHydrated()); // eslint-disable-line
 
-const App = <Provider store={store}>
+const App = (
+  <Provider store={store}>
     <BrowserRouter>
       <AppRouter />
     </BrowserRouter>
-  </Provider>;
+  </Provider>
+);
 
 hydrate(
   App,
   document.getElementById('app') // eslint-disable-line
 );
-if (module.hot) {
-  //hot(module)(App);
-  //module.hot.accept();
-}
