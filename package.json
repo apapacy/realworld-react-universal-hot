@@ -59,6 +59,7 @@
     "cookie-encrypter": "^0.2.3",
     "cookie-parser": "^1.4.3",
     "express": "^4.16.2",
+    "fast-async": "^6.3.8",
     "from": "^0.1.7",
     "import": "0.0.6",
     "lodash": "^4.17.5",

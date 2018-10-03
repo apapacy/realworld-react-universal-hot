@@ -45,11 +45,13 @@ module.exports = {
             targets: {
               browsers: ['>90%'],
             },
+            exclude: ['transform-async-to-generator', 'transform-regenerator',],
           }],
           '@babel/preset-react',
         ],
         plugins: (isDevelopment ? [
           'react-hot-loader/babel',
+          ['module:fast-async', { spec: true }],
           ['@babel/plugin-transform-runtime', {
             corejs: false,
             helpers: true,
