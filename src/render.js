@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import routes from './react/routes';
 import AppRouter from './react/serverRouter';
 import createStore from './redux/store';
-import stats from '../dist/stats.generated';
+import stats from '../dist/stats.generated'; // eslint-disable-line import/no-unresolved
 
 function assets(name) {
   const prefix = '/static/';
