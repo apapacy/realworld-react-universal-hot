@@ -36,7 +36,7 @@ For more information on how to this works with other frontends/backends, head ov
 
 ## Code style
 
-> npm lint
+> npm run lint
 
 ## Production mode
 
@@ -132,4 +132,3 @@ https://github.com/apapacy/realworld-react-universal-hot/blob/master/src/react/a
 Пример использования:
 
 https://github.com/apapacy/realworld-react-universal-hot/blob/master/src/react/components/menuItem.js
-

@@ -36,7 +36,7 @@ For more information on how to this works with other frontends/backends, head ov
 
 ## Code style
 
-> npm lint
+> npm run lint
 
 ## Production mode
 
