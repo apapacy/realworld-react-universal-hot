@@ -78,10 +78,10 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
     "renderer": "^0.1.5",
-    "webpack": "^4.19.1",
-    "webpack-cli": "^2.1.5",
-    "webpack-dev-middleware": "^3.3.0",
-    "webpack-hot-middleware": "^2.24.0",
+    "webpack": "^4.23.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-middleware": "^3.4.0",
+    "webpack-hot-middleware": "^2.24.3",
     "webpack-node-externals": "^1.7.2"
   },
   "jest": {
