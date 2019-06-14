@@ -13,7 +13,7 @@ const app = express();
 const nodeEnv = process.env.NODE_ENV || 'development';
 app.use(morgan('method :url :status :res[content-length] - :response-time ms'));
 const cache = apicache.options({
-  appendKey: req => req.get('Authorization'),
+  appendKey: req => req.signedCookies && req.signedCookies.token,
   defaultDuration: 1000,
   headerBlacklist: ['Authorization', 'authorization'],
 }).middleware;
